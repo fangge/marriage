@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>方阳 & 林斯静 婚礼</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/timeline.css">
+    <!--if lt IE 9
+    script(src='https://html5shim.googlecode.com/svn/trunk/html5.js')
+    -->
+    <style>
+        @font-face {
+            font-family: 'wklh';
+            src:url('font/wklh.TTF') format('truetype');/*non-IE*/
+        }
+        .tl-timeline{
+            font-family: "wklh" !important;
+        }
+        #fy {
+            color: #1e69ae;
+        }
+        #love {
+            color: #e31a0b;
+        }
+        #lsj {
+            color: #FF6666;
+        }
+        html, body {
+            height:100%;
+            width:100%;
+            padding: 0px;
+            margin: 0px;
+        }
+    </style>
+</head>
+<!--[if lte IE 7]>
+<body scroll="no">
+<![endif]-->
+<!--[if gt IE 7]><!-->
+<body>
+<div id="timeline"></div>
+<script src="js/timeline-min.js"></script>
+<script>
+    var timeline = new TL.Timeline('timeline', 'js/love.json',{
+        timenav_height:100,
+        timenav_height_percentage:  10,
+        timenav_height_min: 100
+    });
+</script>
+</body>
+</html>
