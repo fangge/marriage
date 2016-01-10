@@ -5,7 +5,7 @@
 			var map = new AMap.Map('map_container', {
 				resizeEnable: true,
 				center: [113.326274,23.13286],
-				zoom: 20
+				zoom: 17
 			});
 			map.clearMap();
 		var markers = [{
@@ -96,8 +96,7 @@
 		dMinute = cutTime.getMinutes() - currentTime.getMinutes();
 	if (+cutTime - currentTime >= 0) {
 		if (dDay == 0) {
-			timeDom.find('.tip').text('就是今天,倒计时:');
-			timeDom.find('.d_hour').text(dHour + '小时');
+			timeDom.find('.tip').text('就是今天!!');
 		} else {
 			timeDom.find('.tip').text('距离婚礼还有:');
 			timeDom.find('.d_day').text(dDay + '天');

@@ -111,6 +111,7 @@ input, select {
 	line-height: 1.2;
 	font-size: 18px;
 	overflow: hidden;
+	overflow-y: scroll;
 }
 
 /* header */
