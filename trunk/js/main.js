@@ -1,36 +1,26 @@
 (function() {
-	$('.tab_content_container li').css('min-height', window.innerHeight - $('#header').height() - $('#footer').height() - $('#main .tab_header').height() - 10);
+	//$('.tab_content_container li').css('min-height', window.innerHeight - $('#header').height()  - $('#main .tab_header').height() - 10);
 	// 启用地图
 	var set_map = _.once(function() {
-			// 百度地图API功能
-			$('#map_container').height(window.innerHeight - $('#header').height() - $('#footer').height() - $('#main .tab_header').height() - 10);
-			// 创建Map实例
-			var map = new BMap.Map("map_container");
-			// 创建点坐标
-			var point1 = new BMap.Point(120.698846, 32.563385), //广电局
-				point2 = new BMap.Point(120.698437, 32.563244), //会场
-				point3 = new BMap.Point(120.69967, 32.567173); //车站
-			map.centerAndZoom(point1, 16); // 初始化地图,设置中心点坐标和地图级别。
-			map.addControl(new BMap.ZoomControl()); //添加地图缩放控件
-			var marker1 = new BMap.Marker(point1),
-				marker2 = new BMap.Marker(point2),
-				marker3 = new BMap.Marker(point3); //创建标注
-			map.addOverlay(marker1); // 将标注添加到地图中
-			map.addOverlay(marker2);
-			map.addOverlay(marker3);
-			//创建信息窗口
-			var infoWindow1 = new BMap.InfoWindow("这里是广电中心,会场就在对面哦"),
-				infoWindow2 = new BMap.InfoWindow("这里就是婚礼会场啦");
-				infoWindow3 = new BMap.InfoWindow("坐长途汽车到李堡车站,然后向南步行一会就到了");
-			marker1.addEventListener("click", function() {
-				this.openInfoWindow(infoWindow1);
+			var center = new qq.maps.LatLng(23.132730,113.326090),
+				stop = new qq.maps.LatLng(23.132270,113.326217);
+			var map = new qq.maps.Map(document.getElementById('map_container'),{
+				center: center,
+				zoom: 20
 			});
-			marker2.addEventListener("click", function() {
-				this.openInfoWindow(infoWindow2);
+			var infoWin = new qq.maps.InfoWindow({
+				map: map
 			});
-			marker3.addEventListener("click", function() {
-				this.openInfoWindow(infoWindow3);
+			var infoWin2 = new qq.maps.InfoWindow({
+				map: map
 			});
+			infoWin.open();
+			infoWin2.open();
+			//tips  自定义内容
+			infoWin.setContent('<div style="width:180px;padding-top:10px;color:#000">正佳万豪酒店</div>');
+			infoWin.setPosition(center);
+			infoWin2.setContent('<div style="width:180px;padding-top:10px;color:#000">正佳万豪酒店停车场</div>');
+			infoWin2.setPosition(stop);
 		}),
 		slider;
 
@@ -61,7 +51,7 @@
 			$(this).removeClass('current');
 		}, .5);
 	})
-	$('.tab_content_container li').eq(1).one('zx-tab-in', function() {
+	$('.tab_content_container li').eq(2).one('zx-tab-in', function() {
 		// 创建幻灯片
 		slider = new Slider({
 			dom: $('#slider'),
@@ -71,13 +61,13 @@
 			thumbImgUrlList: ['./img/slider/thumb/1.jpg', './img/slider/thumb/2.jpg', './img/slider/thumb/3.jpg', './img/slider/thumb/4.jpg']
 		});
 	})
-	$('.tab_content_container li').eq(1).on('zx-tab-in', function() {
+	$('.tab_content_container li').eq(2).on('zx-tab-in', function() {
 		slider.start();
 	})
-	$('.tab_content_container li').eq(1).on('zx-tab-out', function() {
+	$('.tab_content_container li').eq(2).on('zx-tab-out', function() {
 		slider.stop();
 	})
-	$('.tab_content_container li').eq(2).on('zx-tab-in', set_map);
+	$('.tab_content_container li').eq(1).on('zx-tab-in', set_map);
 
 	// 二维码
 	$('.js_QR_btn').on('click', function(e) {
@@ -118,7 +108,6 @@
 		} else {
 			timeDom.find('.tip').text('距离婚礼还有:');
 			timeDom.find('.d_day').text(dDay + '天');
-			timeDom.find('.d_hour').text(dHour + '小时');
 		}
 	} else {
 		timeDom.text('婚礼时间都过啦!');
