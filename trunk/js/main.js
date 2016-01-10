@@ -2,25 +2,31 @@
 	//$('.tab_content_container li').css('min-height', window.innerHeight - $('#header').height()  - $('#main .tab_header').height() - 10);
 	// 启用地图
 	var set_map = _.once(function() {
-			var center = new qq.maps.LatLng(23.132730,113.326090),
-				stop = new qq.maps.LatLng(23.132270,113.326217);
-			var map = new qq.maps.Map(document.getElementById('map_container'),{
-				center: center,
+			var map = new AMap.Map('map_container', {
+				resizeEnable: true,
+				center: [113.326274,23.13286],
 				zoom: 20
 			});
-			var infoWin = new qq.maps.InfoWindow({
-				map: map
+			map.clearMap();
+		var markers = [{
+			content:'正佳万豪酒店',
+			position:[113.326274,23.13286]
+		},{
+			content:'正佳万豪酒店停车场',
+			position:[113.326115,23.132423]
+		}];
+		markers.forEach(function(marker) {
+			var t =new AMap.Marker({
+				map: map,
+				position: [marker.position[0], marker.position[1]]
 			});
-			var infoWin2 = new qq.maps.InfoWindow({
-				map: map
-			});
-			infoWin.open();
-			infoWin2.open();
-			//tips  自定义内容
-			infoWin.setContent('<div style="width:180px;padding-top:10px;color:#000">正佳万豪酒店</div>');
-			infoWin.setPosition(center);
-			infoWin2.setContent('<div style="width:180px;padding-top:10px;color:#000">正佳万豪酒店停车场</div>');
-			infoWin2.setPosition(stop);
+			t.setLabel({
+				offset: new AMap.Pixel(20, 20),
+				content:marker.content
+			})
+		})
+
+
 		}),
 		slider;
 
@@ -69,16 +75,6 @@
 	})
 	$('.tab_content_container li').eq(1).on('zx-tab-in', set_map);
 
-	// 二维码
-	$('.js_QR_btn').on('click', function(e) {
-		$('#QR_container').show();
-		animate($('#QR_container'), 'zoomIn', null, .5);
-	});
-	$('#QR_container').on('click', function(e) {
-		animate($('#QR_container'), 'zoomOut', function() {
-			$(this).hide();
-		}, .5);
-	});
 	// music
 	var bgAudio = $('#bg_audio')[0],
 		bgAudioBtn = $('#bg_audio_btn');
@@ -97,11 +93,8 @@
 		currentTime = new Date,
 		cutTime = new Date('2016/1/24 12:0:0'),
 		dDay = (+cutTime - currentTime) / 1000 / 60 / 60 / 24 | 0,
-		dHour = cutTime.getHours() - currentTime.getHours(),
 		dMinute = cutTime.getMinutes() - currentTime.getMinutes();
 	if (+cutTime - currentTime >= 0) {
-		dMinute < 0 ? (dMinute = 60 + dMinute, dHour--) : null;
-		dHour < 0 ? dHour = 24 + dHour : null;
 		if (dDay == 0) {
 			timeDom.find('.tip').text('就是今天,倒计时:');
 			timeDom.find('.d_hour').text(dHour + '小时');
@@ -112,5 +105,4 @@
 	} else {
 		timeDom.text('婚礼时间都过啦!');
 	}
-	console.log(dDay, dHour, dMinute);
 })();

@@ -29,15 +29,15 @@ module.exports = function(grunt) {
         // 文件合并
         concat: {
             options: {
-                //separator: ';',
+                separator: ';',
                 stripBanners: true
                },
             js:{
-                src: ["build/js/zepto.min.js.js","build/js/touch.js","build/js/underscore-min.js","build/js/iscroll.js","build/js/animate.js","build/js/slider.js","build/js/main.js"],
+                src: ["build/js/zepto.min.js","build/js/touch.js","build/js/underscore-min.js","build/js/iscroll.js","build/js/animate.js","build/js/slider.js","build/js/main.js"],
                 dest: "build/js/com.js"
             },
             css:{
-                src: ["build/css/animate.js","build/css/main.css"],
+                src: ["build/css/main.css","build/css/animate.css"],
                 dest: "build/css/com.css"
             }
         },

@@ -13,6 +13,9 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
 	font-size: 100%;
 	vertical-align: baseline;
 	background: transparent;
+	webkit-focus-ring-color: rgba(0,0,0,0);
+	-webkit-tap-highlight-color: transparent;
+	-webkit-touch-callout: none
 }
 body {
 	line-height: 1;
@@ -108,7 +111,6 @@ input, select {
 	line-height: 1.2;
 	font-size: 18px;
 	overflow: hidden;
-	overflow-y:scroll;
 }
 
 /* header */
@@ -184,7 +186,6 @@ input, select {
 	position: absolute;
 	width: 100%;
 	min-height: 100%;
-	padding-bottom:80px;
 }
 .tab_content_container li.current {
 	display: block;
@@ -206,32 +207,6 @@ body {
 	background-size: auto 100%;
 }
 
-/* 二维码 */
-#QR_container {
-	display: none;
-	background: rgba(207, 203, 203, 0.4);
-	z-index: 100;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	text-align: center;
-}
-#QR_container img {
-	margin-top: -150px;
-	top: 50%;
-	position: relative;
-}
-.QR_btn {
-	display: block;
-	width: 14.5em;
-	text-align: center;
-	font-weight: bolder;
-	margin: 10px auto;
-	padding: 5px;
-	background: #7E5786;
-}
 
 /* 箭头 */
 .right_arrow:after {
@@ -354,4 +329,8 @@ body {
 .marry_img {
 	width: 100%;
 	padding: 20px 0;
+}
+.amap-marker-label{
+	color: #000;
+	font-size: 16px;
 }
