@@ -1,0 +1,20 @@
+{
+  "name": "marrage",
+  "version": "2.0.0",
+  "author":"MrF",
+  "devDependencies": {
+    "grunt": "",
+    "matchdep": "",
+      "grunt-contrib-imagemin":"",
+      "grunt-contrib-concat":"",
+      "grunt-contrib-clean": "",
+      "grunt-contrib-uglify": "",
+      "grunt-replace":"",
+      "grunt-contrib-cssmin": "*",
+      "grunt-contrib-copy":"*",
+      "grunt-usemin": "",
+	  "connect-livereload": "",
+	  "grunt-contrib-connect": "",
+	  "grunt-contrib-watch": ""
+  }
+}

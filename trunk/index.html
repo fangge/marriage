@@ -1,0 +1,114 @@
+<!Doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=640, user-scalable=no, target-densityDpi=device-dpi">
+	<title>请柬</title>
+	<!-- build:css css/com.css?rel=@@timestamp -->
+	<link rel="stylesheet" href="css/main.css"/>
+	<link rel="stylesheet" href="css/animate.css"/>
+	<!-- endbuild -->
+	<script type="text/javascript">
+		function isWeixin() {
+			var ua = navigator.userAgent.toLowerCase();
+			if (ua.match(/MicroMessenger/i) == "micromessenger") {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		var pageWidth = 640;
+		(function(){
+			var phoneWidth = parseInt(window.screen.width),
+					phoneScale = phoneWidth/pageWidth,
+					ua = navigator.userAgent;
+
+			if (/Android (\d+\.\d+)/.test(ua)){
+				var version = parseFloat(RegExp.$1);
+// andriod 2.3
+				if(version > 2.3){
+					document.write('<meta name="viewport" content="width='+pageWidth+', minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+// andriod 2.3以上
+				}else{
+					document.write('<meta name="viewport" content="width='+pageWidth+', target-densitydpi=device-dpi">');
+				}
+// 其他系统
+			} else {
+				document.write('<meta name="viewport" content="width='+pageWidth+', user-scalable=no, target-densitydpi=device-dpi">');
+			}
+		})();
+	</script>
+</head>
+<body>
+	<div id="body">
+		<header id="header">请柬</header>
+		<div id="main">
+			<div class="tab_header clearfix">
+				<span class="current">请柬</span>
+				<span>地图</span>
+				<span>婚纱照</span> <b></b>
+			</div>
+			<ul class="tab_content_container">
+				<li class="current">
+					<article>
+						<h3></h3>
+						<p class="marry_text">
+							两个人彼此相见，成为情侣。
+							<br/>
+							相约一生一起走，成为一家人。
+							<br/>
+							希望大家都来祝福我们的爱情，祝福我们的婚姻。
+						</p>
+						<p class="marry_tip">
+							新郎:<strong>方阳</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新娘:<strong>林斯静</strong>
+							<br/>
+							婚礼时间：<strong>2016年1月24日中午12点</strong><br>
+							农历：<strong>腊月十五</strong>
+							<br/>
+							婚礼地点:广州正佳万豪广场
+						</p>
+						<img src="img/wedding.jpg" class="marry_img" alt=""/>
+						<span class="current_time">
+							<span class="tip"></span>
+							<span class="d_day"></span>
+							<span class="d_hour"></span>
+						</span>
+					</article>
+					<p></p>
+					<div class="bottom">
+						<audio id="bg_audio" autoplay loop src="./audio/bg.mp3" controls="controls" class="hidden">
+							Your browser does not support the audio element.
+						</audio>
+						<span class="QR_btn js_QR_btn hidden">点击显示二维码,分享给其他人</span>
+					</div>
+				</li>
+				<li>
+					<div id="map_container"></div>
+				</li>
+				<li>
+					<div id="slider"></div>
+					<div id="sliderThumb">
+						<div class="clearfix"></div>
+					</div>
+				</li>
+
+			</ul>
+		</div>
+		<footer id="footer"></footer>
+	</div>
+	<span id="bg_audio_btn"></span>
+	<div id="QR_container">
+		<img src="./img/QR.png" alt=""/>
+	</div>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?type=quick&ak=a5XWoshyqzU7BoMbEWowMyAo&v=1.0"></script>
+	<!-- build:js js/com.js?rel=@@timestamp -->
+	<script type="text/javascript" src="js/zepto.min.js"></script>
+	<script type="text/javascript" src="js/touch.js"></script>
+	<script type="text/javascript" src="js/underscore-min.js"></script>
+	<script type="text/javascript" src="js/iscroll.js"></script>
+	<script type="text/javascript" src="js/animate.js"></script>
+	<script type="text/javascript" src="js/slider.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<!-- endbuild -->
+</body>
+</html>
